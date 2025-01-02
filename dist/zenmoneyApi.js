@@ -46,7 +46,7 @@ class ZenmoneyApi {
             json: {
                 currentClientTimestamp,
                 serverTimestamp,
-                ...(forceFetch !== null && forceFetch !== void 0 ? forceFetch : {}),
+                ...(forceFetch ? { forceFetch } : {}),
             },
         });
         return resp.body;
