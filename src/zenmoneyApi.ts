@@ -29,11 +29,13 @@ class ZenmoneyApi {
   async diff({
     currentClientTimestamp = unixNow(),
     serverTimestamp = 0,
+    forceFetch,
   }: DiffObject = {}): Promise<DiffObject> {
     const resp = await client.post<DiffObject>('v8/diff', {
       json: {
         currentClientTimestamp,
         serverTimestamp,
+        ...(forceFetch ?? {}),
       },
     });
 
